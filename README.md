@@ -2,7 +2,8 @@
 
 **CareerPath** is a full-stack application that helps users generate personalized career learning plans. It analyzes a specific job description or role and creates a tailored day-by-day study schedule using AI.
 
-![Dashboard Preview](public/screenshots/dashboard.png)
+![Landing Page Preview](public/screenshots/landing_mockup.png)
+![Dashboard Preview](public/screenshots/dashboard_mockup.png)
 
 ## 🌟 Solution & Features
 
@@ -53,10 +54,6 @@ Finding a clear path to a new career is overwhelming. **CareerPath** solves this
     npm run dev
     ```
     The app will start at `http://localhost:5173` (frontend) and `http://localhost:8080` (backend).
-
-## 📸 Screenshots
-
-*(Add more screenshots here)*
 
 ## 📄 License
 
