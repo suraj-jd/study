@@ -1,60 +1,53 @@
-# 🚀 CareerPath - AI-Powered Learning Roadmap & Curriculum Generator
+# 🚀 CareerPath - AI-Powered Learning Architect
 
-**CareerPath** is a full-stack application that helps users generate personalized career learning plans. It analyzes a specific job description or role and creates a tailored day-by-day study schedule using AI.
+**CareerPath** is a premium, full-stack application that transforms any job description into a high-fidelity, day-by-day learning roadmap. Designed with a cutting-edge **Glassmorphism UI**, it provides a stunning and intuitive experience for career growth.
 
-![Landing Page Preview](public/screenshots/roadmap_view.png)
-![Dashboard Preview](public/screenshots/learn_view.png)
+![CareerPath Hero](public/screenshots/landing_mockup.png)
 
-## 🌟 Solution & Features
+## ✨ Key Features
 
-Finding a clear path to a new career is overwhelming. **CareerPath** solves this by acting as your personal AI Career Architect.
+- **🧠 AI Roadmap Generation**: Analyze complex job descriptions and generate tailored learning paths in seconds.
+- **💎 Premium Glassmorphism UI**: A modern, translucent design system with beautiful mesh gradients and smooth animations.
+- **📅 Day-by-Day Execution**: Structured modules that break down complex topics into manageable daily tasks.
+- **📚 Integrated Learning**: Built-in video players, study notes, and code sandboxes for a seamless learning journey.
+- **📈 Skill Tracking**: Real-time progress monitoring and skill mastery indicators.
 
-*   **🎯 Smart Roadmap Generation**: Generates a structured multi-week learning plan based on your target role, skill level, and daily availability.
-*   **🧠 Dynamic Content Engine**: Unlike static templates, the "Learn" page generates **custom study materials** on the fly:
-    *   Finds the best YouTube tutorials for each specific topic.
-    *   Generates detailed markdown study notes (500+ words).
-    *   Creates runnable code examples and practice quizzes.
-*   **⚡ Real-Time AI Integration**: Powered by **Google Gemini 2.0 Flash** (via OpenRouter) for fast, high-quality curriculum design.
-*   **📊 Progress Tracking**: Track your completion status across modules and visualize your journey.
+![CareerPath Dashboard](public/screenshots/dashboard.png)
 
 ## 🛠️ Tech Stack
 
-*   **Frontend**: React (Vite), Tailwind CSS, Framer Motion, Lucide Icons
-*   **Backend**: Node.js, Express, OpenRouter API
-*   **AI**: Google Gemini 2.0 Flash
+- **Frontend**: React, TypeScript, Tailwind CSS, Lucide Icons, Framer Motion (Animations)
+- **Backend**: Express, Node.js
+- **AI**: Gemini/OpenRouter API
+- **Design**: Vanilla CSS with Glassmorphism Utility System
 
 ## 🚀 Getting Started
 
-### Prerequisites
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/suraj-jd/study.git
+   ```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Set up Environment Variables**:
+   Create a `.env` file in the root:
+   ```env
+   OPENROUTER_API_KEY=your_api_key_here
+   ```
+4. **Run the application**:
+   ```bash
+   npm run dev
+   ```
 
-*   Node.js (v18+)
-*   An [OpenRouter](https://openrouter.ai/) API Key
+## 📸 Screenshots
 
-### Installation
+### Professional Landing Page
+The hero section focuses on high-conversion and clarity, inviting users to generate their roadmap immediately.
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/suraj-jd/study.git
-    cd study
-    ```
+### AI Learning Dashboard
+A 2-column layout designed for maximum productivity, featuring vertical timelines and integrated study materials.
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Configure Environment:**
-    Create a `.env` file in the root directory:
-    ```env
-    OPENROUTER_API_KEY=your_api_key_here
-    ```
-
-4.  **Run Development Server:**
-    ```bash
-    npm run dev
-    ```
-    The app will start at `http://localhost:5173` (frontend) and `http://localhost:8080` (backend).
-
-## 📄 License
-
-MIT License
+---
+*Created with ❤️ by Suraj JD*

@@ -613,44 +613,52 @@ export default function Learn() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+  return (
+    <div className="min-h-screen">
       {/* Top Navigation Bar */}
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div className="flex items-center justify-between h-16 px-4 lg:px-6">
-          <div className="flex items-center gap-4">
+      <header className="glass border-b border-white/20 sticky top-0 z-50">
+        <div className="flex items-center justify-between h-20 px-4 lg:px-8">
+          <div className="flex items-center gap-6">
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 hover:bg-gray-100 rounded-lg lg:hidden"
+              className="p-3 glass rounded-xl lg:hidden text-slate-600 hover:text-indigo-600"
             >
-              <Menu className="w-5 h-5 text-gray-600" />
+              <Menu className="w-5 h-5" />
             </button>
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">CP</span>
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
+                <Sparkles className="text-white w-6 h-6" />
               </div>
-              <span className="font-bold text-lg text-gray-900 hidden sm:block">
+              <span className="font-extrabold text-2xl tracking-tight text-slate-900 hidden sm:block">
                 CareerPath
               </span>
             </Link>
-            <Separator orientation="vertical" className="h-6 hidden sm:block" />
-            <span className="text-sm text-gray-600 truncate max-w-[200px] md:max-w-xs lg:max-w-md">
-              {demoCourse.title}
-            </span>
+            <Separator orientation="vertical" className="h-8 hidden sm:block opacity-20" />
+            <div className="hidden lg:flex flex-col">
+              <span className="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Current Course</span>
+              <span className="font-bold text-slate-700 truncate max-w-xs">{demoCourse.title}</span>
+            </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-2 text-sm text-gray-600">
-              <Clock className="w-4 h-4" />
-              <span>{demoCourse.totalDuration}</span>
+          <div className="flex items-center gap-6">
+            <div className="hidden md:flex items-center gap-6 mr-4">
+              <div className="flex flex-col items-end">
+                <span className="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Time to complete</span>
+                <div className="flex items-center gap-2 text-sm font-bold text-slate-600">
+                  <Clock className="w-4 h-4 text-indigo-500" />
+                  <span>{demoCourse.totalDuration}</span>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-gray-700">
-                {progress}%
-              </span>
-              <Progress value={progress} className="w-24 h-2" />
+            <div className="flex items-center gap-4 glass py-2 px-4 rounded-2xl">
+              <div className="text-right hidden sm:block">
+                <div className="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Progress</div>
+                <span className="text-sm font-bold text-slate-700">{progress}%</span>
+              </div>
+              <Progress value={progress} className="w-24 h-2.5 bg-slate-100" />
             </div>
-            <Button variant="ghost" size="icon" className="hidden sm:flex">
-              <MoreVertical className="w-5 h-5 text-gray-600" />
+            <Button variant="ghost" size="icon" className="glass h-12 w-12 rounded-xl text-slate-500 hover:text-indigo-600">
+              <MoreVertical className="w-5 h-5" />
             </Button>
           </div>
         </div>
@@ -658,28 +666,36 @@ export default function Learn() {
 
       <div className="flex">
         {/* Sidebar - Course Curriculum */}
-        <CourseSidebar
-          modules={modules}
-          currentModuleId={currentModuleId}
-          completedModules={completedModules}
-          onModuleSelect={(id) => {
-            setCurrentModuleId(id);
-            sessionStorage.setItem("currentModule", id.toString());
-          }}
-          isOpen={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
-        />
+        <div className={`transition-all duration-300 ${sidebarOpen ? 'lg:flex' : 'hidden md:hidden'}`}>
+          <CourseSidebar
+            modules={modules}
+            currentModuleId={currentModuleId}
+            completedModules={completedModules}
+            onModuleSelect={(id) => {
+              setCurrentModuleId(id);
+              sessionStorage.setItem("currentModule", id.toString());
+            }}
+            isOpen={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+          />
+        </div>
 
         {/* Main Content Area */}
-        <main className="flex-1 min-h-[calc(100vh-64px)]">
-          <ScrollArea className="h-[calc(100vh-64px)]">
-            <div className="max-w-5xl mx-auto">
+        <main className="flex-1 min-h-[calc(100vh-80px)]">
+          <ScrollArea className="h-[calc(100vh-80px)]">
+            <div className="max-w-6xl mx-auto">
               {/* Video Player Section */}
-              <div className="bg-black aspect-video relative">
+              <div className="bg-slate-900 aspect-video relative rounded-b-[40px] overflow-hidden shadow-2xl mx-1 md:mx-4 mt-2">
                 {isLoadingContent && (
-                  <div className="absolute inset-0 z-10 bg-black/80 flex items-center justify-center flex-col gap-4 text-white">
-                    <Loader2 className="w-10 h-10 animate-spin text-indigo-500" />
-                    <p className="font-medium animate-pulse">Generating personalized content...</p>
+                  <div className="absolute inset-0 z-10 bg-slate-900/90 flex items-center justify-center flex-col gap-6 text-white backdrop-blur-md">
+                    <div className="relative">
+                      <div className="w-20 h-20 border-4 border-indigo-500/20 border-t-indigo-500 rounded-full animate-spin" />
+                      <Sparkles className="absolute inset-0 m-auto w-8 h-8 text-indigo-400 animate-pulse" />
+                    </div>
+                    <div className="text-center">
+                      <p className="text-2xl font-black tracking-tight mb-2">Generating personalized insights...</p>
+                      <p className="text-slate-400 font-medium">Curating resources for current module</p>
+                    </div>
                   </div>
                 )}
                 {currentModule.videoUrl ? (
@@ -691,101 +707,121 @@ export default function Learn() {
                     allowFullScreen
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
-                    <div className="text-center text-white">
-                      <Play className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                      <p className="text-lg">Video content coming soon</p>
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800">
+                    <div className="text-center text-white p-8 glass mx-auto rounded-3xl max-w-sm">
+                      <div className="w-20 h-20 bg-indigo-500/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <Play className="w-10 h-10 text-indigo-400 fill-indigo-400" />
+                      </div>
+                      <p className="text-xl font-bold mb-2">Enhancing Curriculum</p>
+                      <p className="text-slate-400">Our AI is finalizing the video resources for this specific skill.</p>
                     </div>
                   </div>
                 )}
               </div>
 
               {/* Content Navigation Tabs */}
-              <div className="bg-white border-b border-gray-200 sticky top-0 z-30">
-                <div className="flex gap-1 px-4 lg:px-8">
+              <div className="glass border-y border-white/20 sticky top-0 z-30 mt-8">
+                <div className="flex gap-2 px-4 lg:px-8">
                   {[
-                    { id: "content", label: "Course Content", icon: BookOpen },
-                    { id: "notes", label: "Notes & Code", icon: FileText },
-                    { id: "practice", label: "Practice", icon: Code },
+                    { id: "content", label: "Module Overview", icon: BookOpen },
+                    { id: "notes", label: "Study Material", icon: FileText },
+                    { id: "practice", label: "Daily Sprint", icon: Code },
                   ].map((tab) => (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id as any)}
-                      className={`flex items-center gap-2 px-4 py-4 text-sm font-medium border-b-2 transition-colors ${activeTab === tab.id
-                        ? "border-indigo-600 text-indigo-600"
-                        : "border-transparent text-gray-600 hover:text-gray-900"
+                      className={`flex items-center gap-3 px-6 py-6 text-sm font-black uppercase tracking-widest transition-all relative ${activeTab === tab.id
+                        ? "text-indigo-600"
+                        : "text-slate-500 hover:text-slate-900"
                         }`}
                     >
-                      <tab.icon className="w-4 h-4" />
+                      <tab.icon className={`w-5 h-5 ${activeTab === tab.id ? 'text-indigo-600' : 'text-slate-400'}`} />
                       {tab.label}
+                      {activeTab === tab.id && (
+                        <div className="absolute bottom-0 left-6 right-6 h-1 w-12 bg-indigo-600 rounded-full" />
+                      )}
                     </button>
                   ))}
                 </div>
               </div>
 
               {/* Tab Content */}
-              <div className="p-4 lg:p-8">
-                {activeTab === "content" && (
-                  <CourseContent
-                    module={currentModule}
-                    course={demoCourse}
-                    currentIndex={currentIndex}
-                    totalModules={modules.length}
-                  />
-                )}
-
-                {activeTab === "notes" && (
-                  <div className="space-y-8">
-                    <ModuleNotes notes={currentModule.notes} />
-                    <CodeExample
-                      code={currentModule.codeExample}
-                      language="html"
-                      title="Code Example"
+              <div className="p-6 lg:p-10">
+                <div className="animate-in">
+                  {activeTab === "content" && (
+                    <CourseContent
+                      module={currentModule}
+                      course={demoCourse}
+                      currentIndex={currentIndex}
+                      totalModules={modules.length}
                     />
-                    <RealLifeExample example={currentModule.realLifeExample} />
-                    <DownloadableResources
-                      moduleId={currentModule.id}
-                      moduleTitle={currentModule.title}
-                    />
-                  </div>
-                )}
+                  )}
 
-                {activeTab === "practice" && (
-                  <PracticeSection
-                    module={currentModule}
-                    onComplete={handleCompleteModule}
-                  />
-                )}
+                  {activeTab === "notes" && (
+                    <div className="space-y-12">
+                      <div className="glass-card p-1">
+                        <ModuleNotes notes={currentModule.notes} />
+                      </div>
+                      <CodeExample
+                        code={currentModule.codeExample}
+                        language="html"
+                        title="Executable SandBox"
+                      />
+                      <div className="glass-card p-8 bg-indigo-50/30">
+                        <h4 className="flex items-center gap-2 text-xl font-black text-slate-900 mb-4">
+                          <Lightbulb className="w-6 h-6 text-amber-500" />
+                          Real World Application
+                        </h4>
+                        <RealLifeExample example={currentModule.realLifeExample} />
+                      </div>
+                      <DownloadableResources
+                        moduleId={currentModule.id}
+                        moduleTitle={currentModule.title}
+                      />
+                    </div>
+                  )}
+
+                  {activeTab === "practice" && (
+                    <PracticeSection
+                      module={currentModule}
+                      onComplete={handleCompleteModule}
+                    />
+                  )}
+                </div>
               </div>
 
               {/* Navigation Footer */}
-              <div className="border-t border-gray-200 bg-white p-4 lg:p-6 sticky bottom-0 z-30">
-                <div className="flex items-center justify-between max-w-5xl mx-auto">
+              <div className="border-t border-white/20 glass p-6 lg:p-8 sticky bottom-0 z-30 rounded-t-[40px] shadow-2xl">
+                <div className="flex items-center justify-between max-w-6xl mx-auto">
                   <Button
                     variant="outline"
                     onClick={handlePrevModule}
                     disabled={currentIndex === 0}
-                    className="gap-2"
+                    className="gap-3 py-7 px-8 rounded-2xl glass font-bold text-lg hover:bg-white"
                   >
-                    <ChevronLeft className="w-4 h-4" />
-                    <span className="hidden sm:inline">Previous</span>
+                    <ChevronLeft className="w-6 h-6" />
+                    <span>Previous</span>
                   </Button>
 
-                  <div className="flex items-center gap-4">
-                    <span className="text-sm text-gray-600">
-                      Module {currentIndex + 1} of {modules.length}
-                    </span>
-                    {completedModules.includes(currentModuleId) ? (
-                      <Badge variant="secondary" className="gap-1">
-                        <Check className="w-3 h-3" />
-                        Completed
-                      </Badge>
-                    ) : (
-                      <Button onClick={handleCompleteModule} className="gap-2">
-                        <CheckCircle2 className="w-4 h-4" />
+                  <div className="flex items-center gap-8">
+                    <div className="flex flex-col items-center">
+                      <span className="text-xs font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Status</span>
+                      {completedModules.includes(currentModuleId) ? (
+                        <Badge className="bg-green-100 text-green-700 border-green-200 font-bold px-4 py-1.5 rounded-full flex items-center gap-2">
+                          <Check className="w-4 h-4" />
+                          Mastered
+                        </Badge>
+                      ) : (
+                        <span className="text-sm font-bold text-slate-500">In Progress</span>
+                      )}
+                    </div>
+
+                    {!completedModules.includes(currentModuleId) && (
+                      <Button onClick={handleCompleteModule} className="btn-primary-gradient py-7 px-10 rounded-2xl font-bold text-lg gap-3 shadow-xl shadow-indigo-500/30">
+                        <CheckCircle2 className="w-6 h-6" />
                         {currentIndex === modules.length - 1
-                          ? "Complete Course"
-                          : "Mark Complete"}
+                          ? "Finish Journey"
+                          : "Unlock Next"}
                       </Button>
                     )}
                   </div>
@@ -794,10 +830,10 @@ export default function Learn() {
                     variant="outline"
                     onClick={handleNextModule}
                     disabled={currentIndex === modules.length - 1}
-                    className="gap-2"
+                    className="gap-3 py-7 px-8 rounded-2xl glass font-bold text-lg hover:bg-white"
                   >
-                    <span className="hidden sm:inline">Next</span>
-                    <ChevronRight className="w-4 h-4" />
+                    <span>Next Module</span>
+                    <ChevronRight className="w-6 h-6" />
                   </Button>
                 </div>
               </div>
@@ -806,5 +842,7 @@ export default function Learn() {
         </main>
       </div>
     </div>
+  );
+}
   );
 }

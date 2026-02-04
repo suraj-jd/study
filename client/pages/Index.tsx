@@ -149,184 +149,119 @@ export default function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+      <nav className="sticky top-0 z-50 glass border-b border-white/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
-                <span className="text-white font-bold text-lg">CP</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                <Sparkles className="text-white w-6 h-6" />
               </div>
-              <span className="font-bold text-xl text-gray-900">
+              <span className="font-bold text-2xl tracking-tight text-gray-900">
                 CareerPath
               </span>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              <Link
-                to="/"
-                className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                to="/plan"
-                className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-              >
-                Create Roadmap
-              </Link>
-              <a
-                href="#courses"
-                className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-              >
-                Courses
-              </a>
-              <a
-                href="#how-it-works"
-                className="text-gray-600 hover:text-gray-900 font-medium transition-colors"
-              >
-                How It Works
-              </a>
+              <Link to="/" className="text-gray-600 hover:text-indigo-600 font-medium transition-colors">Home</Link>
+              <Link to="/plan" className="text-gray-600 hover:text-indigo-600 font-medium transition-colors">Create Roadmap</Link>
+              <a href="#courses" className="text-gray-600 hover:text-indigo-600 font-medium transition-colors">Courses</a>
+              <a href="#how-it-works" className="text-gray-600 hover:text-indigo-600 font-medium transition-colors">How It Works</a>
             </div>
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center gap-4">
               <Link to="/learn">
-                <Button variant="ghost" className="font-medium">
+                <Button variant="ghost" className="font-medium text-gray-600 hover:text-indigo-600 hover:bg-white/50">
                   My Learning
                 </Button>
               </Link>
               <Link to="/plan">
-                <Button className="bg-indigo-600 hover:bg-indigo-700 gap-2">
+                <Button className="btn-primary-gradient px-6 rounded-xl">
                   Get Started
-                  <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2"
+              className="md:hidden p-2 text-gray-600"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-gray-600" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-600" />
-              )}
+              {mobileMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 bg-white">
-            <div className="px-4 py-4 space-y-3">
-              <Link to="/" className="block py-2 text-gray-600 font-medium">
-                Home
-              </Link>
-              <Link to="/plan" className="block py-2 text-gray-600 font-medium">
-                Create Roadmap
-              </Link>
-              <a
-                href="#courses"
-                className="block py-2 text-gray-600 font-medium"
-              >
-                Courses
-              </a>
-              <a
-                href="#how-it-works"
-                className="block py-2 text-gray-600 font-medium"
-              >
-                How It Works
-              </a>
-              <div className="pt-3 border-t border-gray-200">
-                <Link to="/plan" className="block">
-                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700">
-                    Get Started
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50" />
+      <section className="relative pt-20 pb-32 px-4 overflow-hidden">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-left animate-in">
+            <Badge className="mb-6 bg-indigo-100 text-indigo-700 border-indigo-200 py-1.5 px-4 font-semibold">
+              <Sparkles className="w-3.5 h-3.5 mr-2" />
+              AI-Powered Career Architect
+            </Badge>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32">
-          <div className="text-center max-w-4xl mx-auto">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 rounded-full mb-8">
-              <Sparkles className="w-4 h-4 text-indigo-600" />
-              <span className="text-sm font-semibold text-indigo-700">
-                100% Free • Open Source • AI-Powered
-              </span>
-            </div>
-
-            {/* Main Heading */}
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              Job Description to{" "}
-              <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                Career Roadmap
-              </span>
+            <h1 className="text-6xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight leading-[1.1]">
+              Your AI Architect for <br />
+              <span className="text-indigo-600">Career Growth</span>
             </h1>
 
-            {/* Subheading */}
-            <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Transform any job description into a personalized, structured
-              learning path. Free courses, curated resources, and AI-powered
-              guidance to land your dream job.
+            <p className="text-xl md:text-2xl text-slate-600 mb-10 leading-relaxed max-w-xl">
+              Generate personalized learning roadmaps in seconds. Transform any job description into a day-by-day execution plan.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-wrap gap-4">
               <Link to="/plan">
-                <Button
-                  size="lg"
-                  className="bg-indigo-600 hover:bg-indigo-700 text-lg px-8 py-6 gap-2"
-                >
-                  Create Your Roadmap
+                <Button className="btn-primary-gradient text-lg px-8 py-7 rounded-2xl gap-2 shadow-2xl shadow-indigo-500/40">
+                  Generate Roadmap
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 gap-2"
-              >
-                <Play className="w-5 h-5" />
+              <Button size="lg" variant="outline" className="text-lg px-8 py-7 rounded-2xl glass hover:bg-white/90 gap-2">
+                <Play className="w-5 h-5 text-indigo-600 fill-indigo-600" />
                 Watch Demo
               </Button>
             </div>
 
-            {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-green-500" />
-                <span>No credit card required</span>
+            <div className="mt-12 flex items-center gap-6 text-slate-500 font-medium">
+              <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-500" /> No Card Needed</div>
+              <div className="flex items-center gap-2"><CheckCircle2 className="w-5 h-5 text-green-500" /> Free Forever</div>
+            </div>
+          </div>
+
+          {/* Right Visual (Mockup style) */}
+          <div className="relative animate-in [animation-delay:200ms]">
+            <div className="relative z-10 glass-card p-4 rotate-2 hover:rotate-0 hover:scale-105">
+              <img
+                src="public/screenshots/landing_mockup.png"
+                alt="Dashboard Mockup"
+                className="rounded-xl shadow-2xl border border-white/50"
+              />
+              <div className="absolute -bottom-6 -left-6 glass p-6 rounded-2xl shadow-2xl animate-bounce duration-[3000ms]">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                    <TrendingUp className="text-green-600 w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-bold text-slate-900">Success Rate</div>
+                    <div className="text-xs text-slate-500">94% Job Placement</div>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-green-500" />
-                <span>Free forever</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-green-500" />
-                <span>Open source</span>
-              </div>
+            </div>
+
+            {/* Background elements to match mockup flair */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] z-0">
+              <div className="w-full h-full bg-indigo-400 opacity-10 blur-3xl rounded-full" />
             </div>
           </div>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-indigo-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
       </section>
 
       {/* Stats Section */}
