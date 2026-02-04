@@ -2,8 +2,8 @@
 
 **CareerPath** is a full-stack application that helps users generate personalized career learning plans. It analyzes a specific job description or role and creates a tailored day-by-day study schedule using AI.
 
-![Landing Page Preview](public/screenshots/landing_mockup.png)
-![Dashboard Preview](public/screenshots/dashboard_mockup.png)
+![Landing Page Preview](public/screenshots/roadmap_view.png)
+![Dashboard Preview](public/screenshots/learn_view.png)
 
 ## 🌟 Solution & Features
 
