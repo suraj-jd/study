@@ -1,0 +1,286 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 8%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 264 80% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 13% 91%;
+    --muted-foreground: 220 14% 46%;
+
+    --accent: 176 85% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 220 13% 91%;
+
+    --card: 224 71% 8%;
+    --card-foreground: 220 13% 91%;
+
+    --popover: 224 71% 8%;
+    --popover-foreground: 220 13% 91%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 224 71% 8%;
+
+    --secondary: 264 80% 52%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 13% 20%;
+    --muted-foreground: 220 13% 50%;
+
+    --accent: 176 85% 48%;
+    --accent-foreground: 224 71% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 224 71% 8%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+}
+
+/* Modern Course Platform Styles */
+@layer components {
+  /* Video Player Container */
+  .video-container {
+    @apply relative bg-black rounded-xl overflow-hidden;
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Course Card Hover Effect */
+  .course-card {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .course-card:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+
+  /* Module Progress Indicator */
+  .module-progress {
+    @apply relative;
+  }
+
+  .module-progress::after {
+    content: "";
+    @apply absolute bottom-0 left-0 h-0.5 bg-indigo-500 transition-all duration-500;
+    width: var(--progress, 0%);
+  }
+
+  /* Code Block Styling */
+  .code-block {
+    @apply bg-gray-900 text-gray-100 rounded-lg p-4 overflow-x-auto font-mono text-sm;
+  }
+
+  .code-block code {
+    @apply bg-transparent;
+  }
+
+  /* Resource Card Hover */
+  .resource-card {
+    @apply transition-all duration-200;
+  }
+
+  .resource-card:hover {
+    @apply border-indigo-300 bg-indigo-50;
+  }
+
+  /* Sticky Sidebar */
+  .sidebar-sticky {
+    @apply sticky top-16;
+    height: calc(100vh - 4rem);
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400;
+  }
+
+  /* Achievement Badge Animation */
+  @keyframes badge-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .achievement-badge {
+    animation: badge-pulse 2s ease-in-out infinite;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600;
+  }
+
+  /* Glass Effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+
+  /* Focus Ring for Accessibility */
+  .focus-ring:focus-visible {
+    @apply outline-none ring-2 ring-indigo-500 ring-offset-2;
+  }
+
+  /* Animated Underline */
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    content: "";
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300;
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Status Badge Variants */
+  .badge-completed {
+    @apply bg-green-100 text-green-700 border-green-200;
+  }
+
+  .badge-in-progress {
+    @apply bg-indigo-100 text-indigo-700 border-indigo-200;
+  }
+
+  .badge-locked {
+    @apply bg-gray-100 text-gray-500 border-gray-200;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-in {
+    animation: animate-in 0.3s ease-out;
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
