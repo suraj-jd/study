@@ -18,6 +18,8 @@ import {
   MoreVertical,
   Check,
   Loader2,
+  Sparkles,
+  Lightbulb,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -613,7 +615,6 @@ export default function Learn() {
   }
 
   return (
-  return (
     <div className="min-h-screen">
       {/* Top Navigation Bar */}
       <header className="glass border-b border-white/20 sticky top-0 z-50">
@@ -842,7 +843,5 @@ export default function Learn() {
         </main>
       </div>
     </div>
-  );
-}
   );
 }
